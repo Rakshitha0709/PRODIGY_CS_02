@@ -3,14 +3,12 @@ import cv2
 def encrypt_image(path, key):
     image = cv2.imread(path)
 
-    # Check if image loaded properly
     if image is None:
         print(f"[ERROR] Could not load image at: {path}")
         return
 
     print("[INFO] Image loaded successfully!")
 
-    # Perform pixel manipulation
     encrypted = (image.astype('uint16') + key) % 256
     encrypted = encrypted.astype('uint8')
 
